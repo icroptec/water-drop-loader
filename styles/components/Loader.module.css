@@ -1,0 +1,218 @@
+@keyframes waterDrop {
+  0% {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+@keyframes plantGrow {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 150px;
+    opacity: 1;
+  }
+}
+
+@keyframes water-drop {
+  0% {
+    opacity: 0;
+    z-index: 10;
+    transform: translate(0, -100px) scale(1, 1);
+  }
+  50% {
+    opacity: 1;
+    z-index: 10;
+    transform: translate(0, 0) scale(0.8, 1.2);
+  }
+  51% {
+    opacity: 1;
+    z-index: 10;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-width: 10px;
+    transform: rotateX(70deg);
+    animation-timing-function: cubic-bezier(.12, .41, .63, .99);
+  }
+  100% {
+    opacity: 0;
+    z-index: 1;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-width: 200px;
+    transform: rotateX(70deg);
+    animation-timing-function: cubic-bezier(.12, .41, .63, .99);
+  }
+}
+
+@keyframes plantGrow {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  42% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes plantLeaft {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes plantLeaftRight {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  border-radius: 100%;
+  width: 100%;
+  clip-path: circle(100px at center);
+  height: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  margin: -100px 0 0 -100px;
+}
+
+.waterDamage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  width: 200px;
+  height: 200px;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  z-index: 102;
+}
+
+.waterDrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  width: 0;
+  height: 0;
+  border: 10px solid #30DFF3;
+  border-radius: 1000px;
+  margin-top: -50px;
+  margin-left: -10px;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transform: translate(0, -100px) scale(1, 1);
+  animation: water-drop 1.5s cubic-bezier(.56, .18, .92, .69) infinite;
+}
+.waterDrop::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7.5px 13.0px 7.5px;
+  border-color: transparent transparent #30DFF3 transparent;
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  transform: translate(-50%, 0);
+}
+
+.plant {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 150px;
+  opacity: 0;
+  background-color: #44D542;
+  margin-top: -20px;
+  margin-left: -3px;
+  animation: plantGrow 1.5s ease-in-out forwards infinite;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 5px;
+  transform-origin: 0 100%;
+  z-index: 103;
+}
+
+.plantLeaf {
+  position: absolute;
+  background-color: #44D542;
+  border-top-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+  animation-delay: 2.6s;
+}
+
+.plantLeaf__topLeft {
+  top: -20px;
+  left: -40px;
+  width: 40px;
+  height: 40px;
+  animation: plantLeaft 1.5s ease-in-out infinite;
+  transform-origin: bottom right;
+}
+
+.plantLeaf__topRight {
+  top: -19px;
+  left: 6px;
+  width: 30px;
+  height: 30px;
+  animation: plantLeaftRight 1.5s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+
+.plantLeaf__bottomLeft {
+  top: 40px;
+  left: -50px;
+  width: 50px;
+  height: 50px;
+  animation: plantLeaft 1.5s ease-in-out infinite;
+  transform-origin: bottom right;
+}
+
+.plantLeaf__bottomRight {
+  top: 25px;
+  left: 6px;
+  width: 40px;
+  height: 40px;
+  animation: plantLeaftRight 1.5s ease-in-out infinite;
+  transform-origin: bottom left;
+}
